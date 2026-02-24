@@ -143,7 +143,7 @@ CREATE TABLE diarios (
 );
 
 INSERT INTO diarios
-values (default, 'Banco de Dados');
+values (default, default, 'Banco de Dados');
 ```
 
 #### Como funciona o SERIAL internamente?
