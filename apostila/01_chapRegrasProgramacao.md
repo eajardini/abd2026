@@ -207,6 +207,8 @@ usa = {id_usa(pk), id_obra(fk), id_maquina(fk), data_do_uso}
     1.1. Crie as tabelas obra, maquina, usa e suas respectivas sequências.
     1.2. Insira duas obras e duas máquinas usando as sequência criadas.
     1.3. Atribua para cada obra as duas máquinas.
+    1.4. Dado um código de máquina, encontre todos os seus dados.
+    1.5. Dado um código de obra, encontra todas as suas máquinas
 
 ## _OPERAÇÕES COM CONJUNTOS EM SQL_
 
