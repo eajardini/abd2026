@@ -204,7 +204,7 @@ maquina = {id_maquina(pk), codigo(unique), marca}
 usa = {id_usa(pk), id_obra(fk), id_maquina(fk), data_do_uso}
 ```
 
-    1.1. Crie sequências obra, maquina e usa.
+    1.1. Crie as tabelas obra, maquina, usa e suas respectivas sequências.
     1.2. Insira duas obras e duas máquinas usando as sequência criadas.
     1.3. Atribua para cada obra as duas máquinas.
 
