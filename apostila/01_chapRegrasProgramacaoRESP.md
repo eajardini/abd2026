@@ -137,8 +137,12 @@ where codigo = 'm001';
 
 **1.5. Dado um código de obra, encontra todas as suas máquinas.**
 ```sql
-select * from maquina 
-where codigo = 'm001';
+select o.codigo as "Código da obra",  o.descricao as "Descrição da obra",
+	   m.codigo as "Código da máquina", m.marca as "Marca da máquina" 
+from obra o, usa u, maquina m
+where o.id_obra = u.id_obra
+   AND u.id_maquina = m.id_maquina
+   AND o.codigo = 'o001';
 ```
 
 
