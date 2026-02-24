@@ -163,7 +163,7 @@ ALTER TABLE Usuarios ALTER COLUMN ID SET DEFAULT nextval('usuarios_id_seq');
 Após inserir um registro, podemos recuperar o ID gerado:
 ```sql
 INSERT INTO diarios
-values (default, 'Estrutura de Dados') RETURNING diarioid;
+values (default, default, 'Estrutura de Dados') RETURNING diarioid, diarioidbig;
 
 ```
 
