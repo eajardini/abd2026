@@ -137,7 +137,8 @@ O tipo de dado SERIAL no PostgreSQL é usado para criar chaves primárias **auto
 ```sql
 
 CREATE TABLE diarios (
-    diarioID SERIAL/BIGSERIAL PRIMARY KEY -- serial ou bigserial vai depender da quantidade de registros,
+    diarioID SERIAL PRIMARY KEY,  -- serial ou bigserial vai depender da quantidade de registros
+    diarioIDBig BIGSERIAL,
     descricao VARCHAR(100)
 );
 
