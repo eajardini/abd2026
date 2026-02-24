@@ -103,30 +103,42 @@ values (nextval('sid_usa'), (select id_obra from obra
                                    where codigo='o001'),
                             (select id_maquina from maquina 
                                    where codigo='m001'),
-                            '25/07/2019');
+                            '07/23/2025');
 
 insert into usa 
 values (nextval('sid_usa'), (select id_obra from obra 
                                    where codigo='o001'),
                             (select id_maquina from maquina 
                                    where codigo='m002'),
-                            '25/07/2019');
+                            '07/25/2025');
 
 insert into usa 
 values (nextval('sid_usa'), (select id_obra from obra 
                                    where codigo='o002'),
                             (select id_maquina from maquina 
                                    where codigo='m001'),
-                            '21/06/2019');
+                            '06/21/2025');
 
 insert into usa 
 values (nextval('sid_usa'), (select id_obra from obra 
                                    where codigo='o002'),
                             (select id_maquina from maquina 
                                    where codigo='m002'),
-                            '21/06/2019');
+                            '06/22/2026');
 
 select * from usa;
+```
+
+**1.4. Dado um código de máquina, encontre todos os seus dados.**
+```sql
+select * from maquina 
+where codigo = 'm001';
+```
+
+**1.5. Dado um código de obra, encontra todas as suas máquinas.**
+```sql
+select * from maquina 
+where codigo = 'm001';
 ```
 
 
