@@ -118,3 +118,60 @@ em que os parâmetros podem ser:
 * **ENCODING valor**: esse argumento é responsável por indicar qual o conjunto de caracteres que o banco de dados irá usar. Para poder utilizar acentos da língua portuguesa, utilize o ENCODING *utf-8*.  
 * **TABLESPACE nome**: indica em qual tablespace o BD será armazenado.  
 * **CONNECTION LIMIT valor**: indica a quantidade máxima de usuários que poderão se  conectar simultaneamente ao BD. O limite máximo só é observado para usuários que não sejam administradores, dessa forma, para o usuário postgres, não existe limite de conexão. O valor padrão é -1 indicando que não há limite de conexão simultânea.
+
+#### Exemplos
+1. Criando o banco de dados escola com *encoding utf-8*:
+```sql
+CREATE DATABASE escola encoding 'utf-8';
+```
+
+2. Criando o banco de dados sisvenda para o usuário usersisvenda:
+```sql
+-- Com o usuário postgres faça:
+create user usersisvenda WITH ENCRYPTED PASSWORD '123456';
+
+CREATE DATABASE sisvenda encoding 'utf-8' owner usersisvenda;
+
+-- Abra outro psql desta forma:
+psql -h localhost -U usersisvenda -d sisvenda
+```
+
+3. Criando um banco de dados com limite de acesso a um usuário por vez. Lembrando que o usuário *postgres* não possui esse limite:
+
+```sql
+CREATE DATABASE dblimite connection limit 1 owner usersisvenda;
+
+-- Em outro psql tente se conectar (vai dar certo):
+psql -h localhost -U usersisvenda -d dblimite
+
+-- Novamente, em outro psql tente se conectar (o limite de conexão vai segurar):
+psql -h localhost -U usersisvenda -d dblimite
+
+-- Para aumentar as conexões, faça:
+
+ALTER DATABASE dblimite connection limit -1;
+
+-- Agora tente se conectar novamente:
+psql -h localhost -U usersisvenda -d dblimite
+```
+
+### Visualizando os Banco de Dados
+Para visualizar os banco de dados no psql, digite:  
+
+*\l*
+
+Já por meio de SQL, escreva o comando a seguir:
+```sql
+select datname from pg_database;
+```
+
+### Conectando a um Banco de Dados
+Para conectarmos a um banco de dados no psql, digite:  
+```
+\c nome_database
+```
+
+Por exemplo, para conectarmos ao database *sisvenda*, fazemos:  
+```
+\c sisvenda
+```
