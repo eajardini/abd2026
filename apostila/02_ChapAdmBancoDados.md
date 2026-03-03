@@ -45,7 +45,7 @@ Exemplo:
 `\h alter table;`
 <br>
 
-*  ** \?** : que mostra ajuda a respeito dos comando do próprio psql. Conhecidos como comando do tipo ”\" (contrabarra).
+* **`\?`** : que mostra ajuda a respeito dos comando do próprio psql. Conhecidos como comando do tipo ”`\`" (contrabarra).
 
 
 
