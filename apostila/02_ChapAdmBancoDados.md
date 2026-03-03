@@ -157,8 +157,9 @@ psql -h localhost -U usersisvenda -d dblimite
 
 ### Visualizando os Banco de Dados
 Para visualizar os banco de dados no psql, digite:  
-
-*\l*
+```
+\l
+```
 
 Já por meio de SQL, escreva o comando a seguir:
 ```sql
@@ -166,7 +167,7 @@ select datname from pg_database;
 ```
 
 ### Conectando a um Banco de Dados
-Para conectarmos a um banco de dados no psql, digite:  
+Para conectarmos a um banco de dados no *psql*, digite:  
 ```
 \c nome_database
 ```
