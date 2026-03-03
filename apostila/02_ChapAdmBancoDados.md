@@ -47,5 +47,74 @@ Exemplo:
 
 * **`\?`** : que mostra ajuda a respeito dos comando do próprio psql. Conhecidos como comando do tipo ”`\`" (contrabarra).
 
+#### Realizando tarefas no psql com os comando do tipo `”\”`.
 
+1. \l :trazer a lista dos databases existentes.
+```sql
+\l
+```
 
+2.  \c : conectar em um database específico.
+```sql
+\c postgres
+\c abds5
+```
+
+3. \i: importar um script no formato sql.
+```sql
+\c postgres
+drop database abds5;
+\i /caminho do arquivo/00_criabaseBD_Postgres.sql
+```
+
+4. \d: listar os objetos como tabelas, sequencias, etc do database em que está conectado.
+```sql
+\d
+
+Variações:
+
+\d tabela: descreve a estrutura de uma tabela.
+\dt :lista somente os objetos do tipo tabela.
+\dv : lista as visões do database.
+\di : lista os índices do database.
+\df : lista as funções desenvolvidas pelos programadores no database.
+\sf nome_da_função: mostra a definição de uma função desenvolvida pelo programador.
+\db nome_da_função: lista todas as tablespaces disponíveis.
+
+```
+
+## TAREFAS DO DBA
+
+Vimos alguns exemplos de como podemos utilizar o *psql* para realizar atividades do DBA dentro do SGBD Postgre. A seguir serão apresentadas algumas tarefas desempenhas por esse profissional.
+
+### Conhecendo a versão do Postgres
+Para sabendo a versão do SGBD que estamos trabalhando de dentro do psql digite:
+```sql
+SELECT version();
+```
+
+Na linha de comando do Sistema Operacional, digite:
+```sql
+psql --version
+```
+
+### Tempo em que o sgbd está no ar
+Para saber quanto tempo o SGBD Postgres está no ar, digite a consulta a seguir:
+```sql
+SELECT date_trunc('second',
+     current_timestamp - pg_postmaster_start_time())
+       as uptime;
+```
+
+### Criando um Banco de Dados
+Um banco de dados é um objeto do SGBD que armazena as tabelas, visões, gatilhos, sequences, etc.  
+Para criar um novo banco de dados, utiliza-se o comando:
+```sql
+CREATE DATABASE nome_do_banco_de_dados [parâmetros];
+```
+
+em que os parâmetros podem ser:  
+* **OWNER usuário**: é possível informar qual usuário do servidor será responsável pelo banco de dados.  
+* **ENCODING valor**: esse argumento é responsável por indicar qual o conjunto de caracteres que o banco de dados irá usar. Para poder utilizar acentos da língua portuguesa, utilize o ENCODING *utf-8*.  
+* **TABLESPACE nome**: indica em qual tablespace o BD será armazenado.  
+* **CONNECTION LIMIT valor**: indica a quantidade máxima de usuários que poderão se  conectar simultaneamente ao BD. O limite máximo só é observado para usuários que não sejam administradores, dessa forma, para o usuário postgres, não existe limite de conexão. O valor padrão é -1 indicando que não há limite de conexão simultânea.
