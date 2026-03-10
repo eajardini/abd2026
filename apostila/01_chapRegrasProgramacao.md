@@ -664,7 +664,8 @@ SELECT classificar_numero(0);   -- Retorna: 'O número é zero'
 
 ```
 ### Consultas simples com o comando SELECT ... INTO
-O comando SELECT ... INTO possibilita que usemos valores recuperados das tabelas do banco de dados dentro das funções. Desta forma, muitas das rotinas que são desenvolvidas nas linguagens de programação e que acessam muitos dados podem ser convertidas para dentro do SGBD. 
+O comando SELECT ... INTO possibilita que usemos valores recuperados das tabelas para dentro de variáveis. Desta forma, podemos recuperar um valor de um campo, atribui-lo a uma variável e realizar operações sobre a variável.
+
 A sintaxe desse comando é:
 
 ```sql
@@ -672,7 +673,7 @@ select campo1, campo2,... ,campoN INTO var1, var2,... , varN
 [from tabela]
 ```
 
-**:rocket: Exemplo 1**: Projete uma função que receba dois números como parâmetro e devolva a soma deles. Repare o **RAISE NOTICE** no corpo da função. Realize a soma com o comando *select*:
+**:rocket: Exemplo 1**: Projete uma função que receba dois números como parâmetros e devolva a soma deles. Repare o **RAISE NOTICE** no corpo da função, ele possibilita que os valores descritos apaeçam na aba *message* do *pgAdmin*. Já no *psql* a mensagem vai aparacer antes do resultado fo *return*. Realize a soma com o comando *select*:
 ```sql
 CREATE OR REPLACE FUNCTION f_SomaSelect (num1 numeric, num2 numeric) RETURNS numeric
 AS
@@ -688,7 +689,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-uso: select (4,6);
+uso: select f_SomaSelect(4,6);
 ```
 
 **:rocket: Exemplo 2**: Desenvolva uma função que receba o código do cliente como parâmetro e devolva o nome e o endereço concatenados:
