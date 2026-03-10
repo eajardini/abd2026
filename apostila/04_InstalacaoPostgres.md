@@ -5,4 +5,28 @@
 Como tantas outras tecnologias, o PostgreSQL também pode ser em containers Docker. A tecnologia de containers possibilita que ambientes de desenvolvimento, testes e  produção executem de forma idêntica independente de características que existem somente em um ou outro ambiente. O uso de container impede que a situação do
 software que executa sem erros na máquina do desenvolvedor, porém, ao rodar em produção, surgem erros não detectados antes.
 
+Com os _containers_ podemos executar diversas versões do PostgreSQL lado a lado sem que uma atrapalhe a outra.
+
+## Sítio Eletrônico do PostgreSQL no Docker
+
+As imagens dos _containers Docker_ disponíveis do PostgreSQL podem ser acessadas no sítio eletrônico do [docker](https://hub.docker.com). Esse endereço é denominado de hub do Docker.
+
+Neste sítio eletrônico além das imagens, há instruções de como instalar as imagens do _PostgreSQL_.
+
+## Instalando o Docker
+O _Docker_ é um gerenciador de _container_ que roda em diversos Sistemas Operacionais (SO). Sua instalação em um determinado SO depende das características do sistema e não será abordado nesta seção. Partiremos do princípio que o Docker já esteja instalado.
+
+Para verificar se o Docker está instalado, dê o comando utilizando um usuário com acesso ao sudo:
+
+```bash
+sudo docker images
+```
+
+Caso receba uma mensagem de comando não localizado, então instale o _Docker_ em seu SO.
+
+## Instalando Container do PostgreSQL
+
+
+
+
 
