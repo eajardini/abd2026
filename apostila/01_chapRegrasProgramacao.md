@@ -521,7 +521,7 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-**:rocket: Exemplo**: Retornado as posições de 2 a 5 do primeiro valores dos parâmetros de entrada, mas agora acessando o parâmetros pelo nome:
+**:rocket: Exemplo**: Retornado, a partir da posição de 2, as letras de uma palavra passada como parâmetro:
 ```sql
 CREATE OR REPLACE FUNCTION f_substringPorNome(nomePar varchar, posicaoInicialPar integer) RETURNS varchar
 AS
