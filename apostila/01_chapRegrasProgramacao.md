@@ -718,10 +718,12 @@ uso: SELECT f_Nome_Endereco (720);
 
    
 ### Usando Comandos DML em Funções
-As funções permite-nos usar comandos do tipo DML (Insert, Update e Delete) para manipulação de dados. A **vantagem de usarmos comandos DML** nas funções, é que podemos **diminuir ainda mais o tráfego de dados pela rede**, visto que você pode lêr dados de uma tabela e inseri-lo em outras sem a necessidade desses dados fazerem acesso ao meio de comunicação.
+As funções nos permite usar comandos do tipo DML (Insert, Update e Delete) para manipulação de dados. A **vantagem de usarmos comandos DML** nas funções, é que podemos **diminuir ainda mais o tráfego de dados pela rede**, visto que você pode lêr dados de uma tabela e inseri-los em outras sem a necessidade desses dados fazerem acesso ao meio de comunicação.
 
-**:rocket: Exemplo 1**: Implemente uma função que receba os valores por parâmetro e os insira na tabela de funcionários (*seq_funcionario*). Como a chave primária da referida tabela é um ID, utilize a sequência criada na **seção sobre sequencias**. Repare no código a seguir o **comando RETURNING ... INTO ...** usado junto com o comando Insert. Ele possibilita que uma variável - no caso do exemplo, a variável resultado - receba o valor de um campo
-inserido. Isso possibilita saber se houve êxito ou não durante a operação.
+**:rocket: Exemplo 1**: Implemente uma função que receba os valores por parâmetros e os insira na tabela de funcionários (*seq_funcionario*). Como a chave primária da referida tabela é um ID, utilize a sequência (_sequence_) criada na **seção sobre sequências**.
+
+Repare no código a seguir o **comando _RETURNING ... INTO_ ...** usado junto com o comando _insert_. Podemos usar separar o comando em duas partes: i) _RETURNING_, que devolve o valor inserido na tabela e ii) _INTO_, que atribui a uma variável o valor devolvido pelo _insert_.
+
 
 ```sql
 create or replace function f_InsereFuncionario (cpf varchar, nome varchar, endereco varchar, cidade varchar, salario numeric) returns Integer
@@ -743,9 +745,9 @@ uso: select f_InsereFuncionario ('5221', 'Paulo Afonso', 'Rua das Acácias', 'Vo
 
 
 ### Retornando Registros
-É possível para as funções fazer retorno de registros de tabelas. O retorno pode ser de um único registro quanto de um conjunto. Assim, as funções trabalhariam como se fossem um comando *select* ou uma *view*. O tipo de dado de retorno de um ou mais registros deve ser **table**.
+É possível para as funções fazer retorno de registros de tabelas. O retorno pode ser de um único registro quanto de um conjunto. Assim, as funções trabalhariam como se fossem um comando *select* ou uma *view*. O tipo de dado de retorno de um ou mais registros deve ser **_table_**.
 
-**:rocket: Exemplo 1**: Projete uma função que passado o código do cliente, retorne as informações nome, endereco, cidade, uf e cep em forma de registro. Implemente na função o controle, por meio de Raise, de cliente não encontrado:
+**:rocket: Exemplo 1**: Projete uma função que passado o código do cliente, retorne as informações nome, endereco, cidade, uf e cep em forma de registro. Implemente na função o controle de cliente não encontrado por meio do comando  _Raise_:
 
 ```sql
 create or replace function f_EncontraCliente (codigo_ClientePar cliente.codigo_cliente%type) returns TABLE(nome_cliente_pars VARCHAR, endereco_pars VARCHAR, cidade_pars VARCHAR, uf_pars CHAR(2), cep_pars VARCHAR)
