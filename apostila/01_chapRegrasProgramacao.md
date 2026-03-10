@@ -768,7 +768,9 @@ begin
 end;
 $$ language plpgsql;
 
-uso: select * from f_EncontraCliente(720);
+uso: 
+  select * from f_EncontraCliente(720); --> O cliente será encontrado.
+  select * from f_EncontraCliente(1720); --> O cliente não será encontrado, gerando um _RAISE EXCEPTION_.
 ```
 
 **:rocket: Exemplo 2**: Desenvolva uma função para trazer os números dos pedidos, prazos de entrega e os valores totais dos pedido de um cliente cujo código seja passado por parâmetro:
