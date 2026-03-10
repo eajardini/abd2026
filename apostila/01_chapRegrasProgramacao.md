@@ -537,15 +537,15 @@ uso: select f_substringPorNome('Votuporanga', 2);
 
 ### Tipos de Dados de Variáveis
 As variáveis podem ter os seguintes tipos de dados:  
-* Boolean: recebe os valores True,False ou Null  
-* Integer: recebe valores inteiros.  
-* Numeric: recebe valores numéricos, tanto inteiros como decimais.  
-* Varchar: recebe valores alfanuméricos.  
-* Date: recebe valores do tipo data.  
-* %type: atribui à variável que está sendo criada os mesmos tipos de dados usados pela coluna que está sendo usada.
-    * Por exemplo, seu a variável codcli for declarada assim `codcli cliente.codigocliente%type`, ela terá o mesmo tipo de dados do campo *codigocliente* da tabela cliente.  
-* %rowtype: declara uma variável composta pelos campos de um registro de uma tabela. Exemplo, regcliente cliente%rowtype. A variável regcliente terá todos os campos da tabela cliente.
-* Table: A cláusula RETURNS TABLE permite que uma função em PL/pgSQL retorne múltiplas colunas e múltiplas linhas, como se fosse o resultado de uma consulta SQL.
+* *Boolean*: recebe os valores True,False ou Null  
+* *Integer*: recebe valores inteiros.  
+* *Numeric*: recebe valores numéricos, tanto inteiros como decimais.  
+* *Varchar*: recebe valores alfanuméricos.  
+* *Date*: recebe valores do tipo data.  
+* *%type*: atribui à variável que está sendo criada os mesmos tipos de dados usados pela coluna que está sendo usada.
+    * Por exemplo, seu a **variável codcli** for declarada assim `codcli cliente.codigocliente%type`, ela terá o mesmo tipo de dados do campo *codigocliente* da tabela cliente.  
+* *%rowtype*: declara uma variável composta pelos campos de um registro de uma tabela. Exemplo, *regcliente cliente%rowtype*. A **variável regcliente** terá todos os campos da tabela cliente.
+* *Table*: A cláusula *RETURNS TABLE* permite que uma função em PL/pgSQL retorne múltiplas colunas e múltiplas linhas, como se fosse o resultado de uma consulta SQL.
 
 
 
