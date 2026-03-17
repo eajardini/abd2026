@@ -828,22 +828,22 @@ $$ LANGUAGE plpgsql;
 
 uso: select * from f_EncontraPedidosVendedores('A');
 ```
-**:rocket: Exemplo 4**: Desenvolva uma função para calcular a diferença em reais entre os preços de custo e de venda dos produtos da tabela *item_pedido*. A função deve retornar descrição do produto e a unidade (tabela *produto*), valor de venda e valor de custo (tabela *item_pedido*) e a diferença em reais. A diferença entre o valor de venda e o valor de custo será calculada na seção *LOOP* desta forma: *diferenca_pars = valor_venda_pars - valor_custo_pars;*:
+**:rocket: Exemplo 4**: Desenvolva uma função para calcular a diferença em reais entre os valores de venda e de custo dos produtos da tabela *item_pedido*. A função deve retornar os campos descrição do produto e unidade que estão na tabela *produto*; os campos valor de venda e valor de custo que estão na tabela *item_pedido* e a diferença entre o valor de venda e o valor de custo. A diferença  será calculada na seção *LOOP* desta forma: *diferenca_par = valor_venda_par - valor_custo_par;*:
 
 ```sql
 CREATE OR REPLACE FUNCTION f_DiferencaValor (
     unidadePar produto.unidade%TYPE
 )  
-RETURNS TABLE(descricao_pars VARCHAR, unidade_pars VARCHAR, valor_venda_pars NUMERIC,valor_custo_pars NUMERIC, diferenca_pars NUMERIC)  
+RETURNS TABLE(descricao_par VARCHAR, unidade_par VARCHAR, valor_venda_par NUMERIC,valor_custo_par NUMERIC, diferenca_par NUMERIC)  
 AS $$    
 BEGIN  
-    FOR descricao_pars, unidade_pars, valor_venda_pars, valor_custo_pars IN  
+    FOR descricao_par, unidade_par, valor_venda_par, valor_custo_par IN  
         SELECT descricao, unidade, ip.valor_venda, ip.valor_custo
         FROM produto p, item_pedido ip
         WHERE p.codigo_produto = ip.codigo_produto
           AND unidade = unidadePar
     LOOP
-        diferenca_pars = valor_venda_pars - valor_custo_pars;
+        diferenca_par = valor_venda_par - valor_custo_par;
         RETURN NEXT;  
     END LOOP;  
 
