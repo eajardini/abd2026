@@ -828,7 +828,7 @@ $$ LANGUAGE plpgsql;
 
 uso: select * from f_EncontraPedidosVendedores('A');
 ```
-**:rocket: Exemplo 4**: Desenvolva uma função para calcular a diferença em reais entre os preços de custo e de venda dos produtos da tabela item_pedido. A função deve retornar descrição do produto e a unidade (tabela produto), valor de venda e valor de custo (tabela item_pedido) e a diferença em reais. A diferença será calculada para os produtos de acordo com a unidades a qual pertence passada por parâmetro:
+**:rocket: Exemplo 4**: Desenvolva uma função para calcular a diferença em reais entre os preços de custo e de venda dos produtos da tabela *item_pedido*. A função deve retornar descrição do produto e a unidade (tabela *produto*), valor de venda e valor de custo (tabela *item_pedido*) e a diferença em reais. A diferença entre o valor de venda e o valor de custo será calculada na seção *LOOP* desta forma: *diferenca_pars = valor_venda_pars - valor_custo_pars;*:
 
 ```sql
 CREATE OR REPLACE FUNCTION f_DiferencaValor (
