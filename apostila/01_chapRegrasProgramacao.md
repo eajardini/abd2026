@@ -910,7 +910,7 @@ A implementação de um gatilho é feita em uma função separada dele. Assim, p
 A sintaxe para criação de gatilhos é:  
 1. Criação da função que **retorna o trigger**:
 ```sql
-create or replace function nome_da_funcao () returns triggers
+create or replace function nome_da_funcao () returns trigger
 as $$
 declare
     ...
