@@ -57,4 +57,26 @@ onde:
 postgres:XX.X: é o nome da imagem que baixamos.
 ```
 
+Após instalar, verifique se o container está rodando com:
+
+```bash
+sudo docker ps
+```
+
+Verifique o container com o nome *NomeDoMeuContainer*.
+
+
+##  Instalando o *PostgreSQL* com o banco de dados fora do *container*
+
+A maneira que configuramos o PostgreSQL , os dados são armazenados internamente dentro do *container*. Se o *container* estiver parado, não temos mais acesso aos dados. Se removermos o *container*, perde-se todos os dados.
+
+Para evitar estas situações, podemos configurar o *container* para gravar os dados localmente no computador, fora do container. A configuração deve ser feita quando configuramos o container pela primeira vez. Para isso, faça:
+
+1. Vamos configurar o *container* indicando que os dados irão ficar guardados em */var/lib/database*. Primeiro, devemos criar o diretório e depois rodar o *docker run*:
+```
+sudo mkdir /var/lib/database
+
+docker run -p 5432:5432 --name NomeDoMeuContainerBDLocal -d -v /var/lib/database:/var/lib/postgresql/data -e POSTGRES_PASSWORD=postdba postgresXX.X
+```
+
 
