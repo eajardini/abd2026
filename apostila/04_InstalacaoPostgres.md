@@ -26,7 +26,35 @@ Caso receba uma mensagem de comando não localizado, então instale o _Docker_ e
 
 ## Instalando Container do PostgreSQL
 
+Para baixar uma versão do PostgreSQL, no hub do Docker, verifique qual a versão do Postgres que deseja instalar e digite:
 
+1. Baixe a imagem para a máquina local com o coando docker pull:
+```bash
+sudo docker pull postgres:XX.X
+Onde:
+XX.X: é a versão do SGBD que você deseja instalar.
+```
 
+2. Verifique a imagem baixada:
+```bash
+docker images
+```
+
+3. Vamos iniciar o container e rodar o comando docker run uma única vez para configurar o PostgreSQL.
+```bash
+
+sudo docker run -p 5432:5432 --name NomeDoMeuContainer -d -e POSTGRES_PASSWORD=postdba postgres:XX.X
+
+onde:
+-p 5432(e):5432(i):
+  A porta 5432(e) é a porta externa, a que será acessada por aplicações que desejam se conectar no PostgreSQL.
+  A porta 5432(i) é a porta interna do Postgres dentro do container.
+
+-d: sobre o container sem travar o prompt
+
+--name NomeDoMeuContainer: é o nome de seu container.
+
+postgres:XX.X: é o nome da imagem que baixamos.
+```
 
 
