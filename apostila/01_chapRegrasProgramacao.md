@@ -970,13 +970,14 @@ execute procedure f_verifica_horario();
 Execute o código: insert into conta values (3, 'A-120', 600);
 ```
 
-**:rocket: Exemplo 2**: Uma prática comum utilizada no **processo de auditoria de sistemas** é o registro das alterações realizadas nos salários dos funcionários. Dependendo do caso, é importante realizar o registro periódico de cada aumento ocorrido na remuneração de um empregado.   
-Abaixo, segue o código de um trigger para registrar as alterações ocorridas na tabela de salário dos funcionários:
+**:rocket: Exemplo 2**: Uma prática comum utilizada no **processo de auditoria de sistemas** é o registro das alterações realizadas nos salários dos funcionários. Dependendo do caso, é importante registrar periodicamente cada aumento ocorrido na remuneração de um empregado.   
+
+Abaixo, segue o código de um trigger para registrar as alterações (*insert* ou *update*) ocorridas na tabela de salário dos funcionários:
 
 1. Inicialmente, cria-se as sequências *sid_func* para registro na **tabela seq_funcionario** e a sequencia *sid_salreg* para a **tabela seq_salario_registro**:
 ```sql
-create sequence sid_func;
-create sequence sid_salreg;
+create sequence sid_func; -- Para ser usada no insert da tabela seq_funcionario
+create sequence sid_salreg; -- Para ser usada no insert da tabela seq_salregistro
 ```
 
 2) Criação da função do trigger que implementa a regra de negócio:
