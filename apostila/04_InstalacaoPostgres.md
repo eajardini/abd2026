@@ -79,4 +79,19 @@ sudo mkdir /var/lib/database
 docker run -p 5432:5432 --name NomeDoMeuContainerBDLocal -d -v /var/lib/database:/var/lib/postgresql/data -e POSTGRES_PASSWORD=postdba postgresXX.X
 ```
 
+## Iniciando e parando um *container* Docker
 
+Após o *Postgres* estar instalado, pode-se subir ou descer a imagem pelos comandos:
+
+1. Para iniciar o container postgresXX.X
+```bash
+sudo docker start postgresXX.X
+```
+
+2. Para parar o container postgresXX.X
+```bash
+sudo docker stop postgresXX.X
+```
+
+## Finalizando
+Vimos neste capítulo, como instalar o *PostgreSQL* em dentro de container. Este tipo de instalação oferece muitos benefícios e deve ser utilizado sempre que possível. Evite instalar o *PostgreSQL* diretamente no computador, prefira *containers*.
