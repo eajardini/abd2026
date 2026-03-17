@@ -750,7 +750,7 @@ uso: select f_InsereFuncionario ('5221', 'Paulo Afonso', 'Rua das Acácias', 'Vo
 **:rocket: Exemplo 1**: Projete uma função que passado o código do cliente, retorne as informações nome, endereco, cidade, uf e cep em forma de registro. Implemente na função o controle de cliente não encontrado por meio do comando  _Raise_:
 
 ```sql
-create or replace function f_EncontraCliente (codigo_ClientePar cliente.codigo_cliente%type) returns TABLE(nome_cliente_pars VARCHAR, endereco_pars VARCHAR, cidade_pars VARCHAR, uf_pars CHAR(2), cep_pars VARCHAR)
+create or replace function f_EncontraCliente (codigo_ClientePar cliente.codigo_cliente%type) returns TABLE(nome_cliente_par VARCHAR, endereco_par VARCHAR, cidade_par VARCHAR, uf_par CHAR(2), cep_par VARCHAR)
 as
 $$   
 begin
@@ -779,10 +779,10 @@ uso:
 CREATE OR REPLACE FUNCTION f_EncontraPedidos (
     codigo_ClientePar cliente.codigo_cliente%TYPE
 )  
-RETURNS TABLE(num_pedido_pars NUMERIC, prazo_entrega_pars NUMERIC, total_pedido_pars NUMERIC)  
+RETURNS TABLE(num_pedido_par NUMERIC, prazo_entrega_par NUMERIC, total_pedido_par NUMERIC)  
 AS $$  
 BEGIN  
-    FOR num_pedido_pars, prazo_entrega_pars, total_pedido_pars IN  
+    FOR num_pedido_par, prazo_entrega_par, total_pedido_par IN  
         SELECT num_pedido, prazo_entrega,  total_pedido  
         FROM pedido 
         WHERE codigo_cliente = codigo_ClientePar  
@@ -807,10 +807,10 @@ uso: select * from f_EncontraPedidos(720);
 CREATE OR REPLACE FUNCTION f_EncontraPedidosVendedores (
     faixa_comissaoPar vendedor.faixa_comissao%TYPE
 )  
-RETURNS TABLE(num_pedido_pars NUMERIC, prazo_entrega_pars NUMERIC, total_pedido_pars NUMERIC)  
+RETURNS TABLE(num_pedido_par NUMERIC, prazo_entrega_par NUMERIC, total_pedido_par NUMERIC)  
 AS $$  
 BEGIN  
-    FOR num_pedido_pars, prazo_entrega_pars, total_pedido_pars IN  
+    FOR num_pedido_par, prazo_entrega_par, total_pedido_par IN  
         SELECT num_pedido, prazo_entrega,  total_pedido  
         FROM pedido p, vendedor v
         WHERE p.codigo_vendedor = v.codigo_vendedor
