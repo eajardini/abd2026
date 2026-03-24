@@ -12,6 +12,9 @@ O DBA é responsável pelo seguinte:
 *  Estratégias de cópia e recuperação;  
 *  Reunião com desenvolvedores.
 
+## Importante
+:exclamation: <mark>Para execução das atividades desse capítulo, iremos utilizar o **psql**.<mark>
+
 ## USUÁRIO COM DIREITOS DE DBA NO POSTGRE
 
 O PostgreSQL possui o usuário **postgres** que é automaticamente criado na instalação e possui direitos de administrador
