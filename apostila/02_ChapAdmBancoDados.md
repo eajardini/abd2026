@@ -262,23 +262,33 @@ Para criar um tablespace utiliza o comando:
 CREATE TABLESPACE nome_do_tablespace LOCATION ’localização’;
 ```
 
-Para utilizamos um tablespace, devemos indicar o diretório em que ele será criado (e os dados serão posteriormente armazenados). O usuário postgres deve ter proprietário desse diretório. Assim, para criarmos um TS dentro de um diretório chamado *dbabd*, devemos seguir os seguintes passos:
+Para utilizamos um tablespace, devemos indicar o diretório em que ele será criado (e os dados serão posteriormente armazenados). O usuário postgres deve ter proprietário desse diretório. Assim, para criarmos um TS dentro de um diretório chamado */opt/dbabd*, devemos seguir os seguintes passos:
 
-- Crie o diretório *dbabd* dentro do diretório do usuário *veterano*: *mkdir ~/dbabd* <enter>
+- Crie o diretório */opt/dbabd* com o usuário *veterano*:
+  
+```BASH
+sudo mkdir /opt/dbabd
+```
+
+- Atribua o direito de propriedade ao usuário *postgres*:
+  
+```BASH
+sudo chown -R postgres /opt/dbabd
+```
 
 Uma vez configurado o diretório em que será criado o TS, vamos criar um novo TS seguindo o código abaixo.
 
 Para isso pode ser utilizado tanto o psql quanto o PgAdmin:
 ```SQL
-CREATE TABLESPACE ts_teste LOCATION ’~/dbabd’;
+CREATE TABLESPACE ts_teste LOCATION '/opt/dbabd';
 ```
 
 Agora, vamos criar um database dentro desse TS criado:
 
 ```SQL
-CREATE DATABASE "db_teste"
-WITH OWNER "postgres"
-ENCODING 'UTF8'
+CREATE DATABASE db_teste
+WITH OWNER postgres
+ENCODING 'utf-8'
 TABLESPACE = ts_teste;
 ```
 
@@ -308,5 +318,8 @@ DROP TABLESPACE ts_teste;
 ##  EXERCÍCIOS
 1. Determine qual a versão de seu SGBD?
 2. Você é consultor de SGBD postgre e foi contratado para criar um novo tablespace (TS) dentro de um novo disco adquirido pela empresa contratante. O nome do novo TS será TSTEMP2 e, dentro dele, deverá ser criado um banco de dados de nome BDTEMP2.
-3. Uma vez criado esse novo database, rode o script da disciplina dentro dele e verifique com que tamanho ele
-ficou.
+3. Uma vez criado esse novo database, rode o script da disciplina dentro dele e verifique com que tamanho ele ficou.
+4. Paulo Afonso, PA, gerente de TI, deconfia que algumas tabelas possuem tamanhos que justificam uma política de backup especial a elas. Destarte, determine quais são as cinco maiores tabelas da base de dados criada dentro do TS TSTEMP2.  
+5. Após reunião com a diretoria, ficou decido que não seria mais necessário o uso do TS TSTEMP2, pois outro TS foi criado para substitui-lo. Assim, Paulo Afonso, pediu a você removesse o referido TS.  
+6. Dentro das atividades para que você foi contratado, está a de que você deve criar um banco de dados de nome BDTEMP3 que permita apenas 5 conexões simultâneas.
+7. Uma vez que se esteja no terminal do PostgreSQL através do uso do comando psql, qual comando deve ser utilizado para exibir a ajuda geral dos comandos do psql?
