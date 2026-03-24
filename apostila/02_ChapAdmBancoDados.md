@@ -82,7 +82,7 @@ Variações:
 \di : lista os índices do database.
 \df : lista as funções desenvolvidas pelos programadores no database.
 \sf nome_da_função: mostra a definição de uma função desenvolvida pelo programador.
-\db nome_da_função: lista todas as tablespaces disponíveis.
+\db: lista todas as tablespaces disponíveis.
 
 ```
 
@@ -93,11 +93,13 @@ Vimos alguns exemplos de como podemos utilizar o *psql* para realizar atividades
 ### Conhecendo a versão do Postgres
 Para sabendo a versão do SGBD que estamos trabalhando de dentro do psql digite:
 ```sql
+-- Traz a versão do postgres
 SELECT version();
 ```
 
 Na linha de comando do Sistema Operacional, digite:
-```sql
+```
+-- Traz a versão do psql
 psql --version
 ```
 
@@ -123,25 +125,27 @@ em que os parâmetros podem ser:
 * **CONNECTION LIMIT valor**: indica a quantidade máxima de usuários que poderão se  conectar simultaneamente ao BD. O limite máximo só é observado para usuários que não sejam administradores, dessa forma, para o usuário postgres, não existe limite de conexão. O valor padrão é -1 indicando que não há limite de conexão simultânea.
 
 #### Exemplos
-1. Criando o banco de dados escola com *encoding utf-8*:
+1. Criando o banco de dados *escola* com *encoding utf-8*:
 ```sql
 CREATE DATABASE escola encoding 'utf-8';
 ```
 
-2. Criando o banco de dados sisvenda para o usuário usersisvenda:
+2. Criando o banco de dados *sisvenda* para o usuário *usersisvenda*:
 ```sql
 -- Com o usuário postgres faça:
 create user usersisvenda WITH ENCRYPTED PASSWORD '123456';
 
 CREATE DATABASE sisvenda encoding 'utf-8' owner usersisvenda;
 
--- Abra outro psql desta forma:
+-- Abra outro psql em outro terminal desta forma:
 psql -h localhost -U usersisvenda -d sisvenda
 ```
 
 3. Criando um banco de dados com limite de acesso a um usuário por vez. Lembrando que o usuário *postgres* não possui esse limite:
 
 ```sql
+-- Faça essas atividades com o usuário postgres
+
 CREATE DATABASE dblimite connection limit 1 owner usersisvenda;
 
 -- Em outro psql tente se conectar (vai dar certo):
@@ -150,11 +154,11 @@ psql -h localhost -U usersisvenda -d dblimite
 -- Novamente, em outro psql tente se conectar (o limite de conexão vai segurar):
 psql -h localhost -U usersisvenda -d dblimite
 
--- Para aumentar as conexões, faça:
+-- Para desabilitar o limite de conexões, faça usando o usuário postgres:
 
 ALTER DATABASE dblimite connection limit -1;
 
--- Agora tente se conectar novamente:
+-- Agora, no outro terminal, tente se conectar novamente ao banco de dados dblinite:
 psql -h localhost -U usersisvenda -d dblimite
 ```
 
