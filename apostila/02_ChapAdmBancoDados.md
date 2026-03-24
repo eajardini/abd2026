@@ -183,3 +183,77 @@ Por exemplo, para conectarmos ao database *sisvenda*, fazemos:
 ```
 \c sisvenda
 ```
+
+### Alterando um Banco de Dados
+Para alterar alguma propriedade do database, usamos o comando:
+
+```sql
+ALTER DATABASE nome_database OPÇÕES
+
+Onde as OPÇÔES são as mesmas do CREATE DATABASE.
+```
+
+Por exemplo, para alteramos a quantidade de conexões simultâneas máxima, fazemos:
+
+```sql
+ALTER DATABASE sisvenda CONNECTION LIMIT -1;
+```
+Isso significa que esse database não terá limite de conexões simultâneas.
+
+### Determinando o Tamanho de um Banco de Dados
+O tamanho de um database em que está conectado é obtido pela *query* a seguir:
+
+```sql
+SELECT pg_database_size(current_database());
+```
+
+Perceba que os valores estão em bytes. Para saber em megabytes acrescente a divisão a seguir:
+```sql
+SELECT (pg_database_size(current_database()))/1048576;
+```
+
+Entretanto, para saber o tamanho em megabytes de todos os databases do SGBD, faça:
+```sql
+SELECT (sum(pg_database_size(datname)))/1048576
+from pg_database;
+```
+
+Já para conhecer o tamanho de uma determinada tabela dentro do banco de dados escreva:
+```sql
+select pg_relation_size('cliente');
+```
+
+Desta forma, para sabermos as tabelas que mais consomem espaço em um banco de dados, basta executar a consulta a seguir:
+
+```sql
+select table_name,
+pg_size_pretty(pg_total_relation_size(quote_ident(table_name))) as "Tam KB",
+pg_total_relation_size(quote_ident(table_name)) as "Tam Byte"
+from information_schema.tables
+where table_schema = 'public'
+order by 3 desc;
+```
+
+### Excluindo um Banco de Dados
+
+Para excluir um baco de dados, digite o comando:
+
+```SQL
+DROP DATABASE nome_banco_dados;
+```
+
+Por exemplo, para excluir o database *escola*, faça:
+
+```SQL
+DROP DATABASE escola;
+```
+
+## GERENCIAMENTO DE TABLESPACES
+Os *tablespaces* (TS) são definições de locais para armazenamento lógico das informações do servidor. As TS permite que os banco de dados sejam criados em outros diretórios do servidor e não mais dentro do diretório padrão ../15.0/data ou ../16.0/data, etc.
+
+Eles existem para que seja possível armazenar informações do servidor em locais distintos, o que pode ocorrer pelos mais diversos motivos: políticas de backup, organização, etc.
+
+### Criando Tablespaces
+:exclamation: Só funciona se o SGBD não estiver em docker.
+Para criar um tablespace utiliza o comando:
+CREATE TABLESPACE nome_do_tablespace LOCATION ’localização’;
