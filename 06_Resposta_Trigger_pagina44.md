@@ -3,7 +3,7 @@
 Desenvolva um gatilho para monitorar a alteração dos endereços dos clientes. Toda vez que um cliente tiver seu endereço alterado por meio de um comando UPDATE, a alteração deve ser registrada por meio de um INSERT em uma tabela de log. Assim, na função do Trigger deve haver um comando INSERT e o evento do Trigger deve ser BEFORE UPDATE.
 A estrutura da tabela sera:...
 
-```
+```SQL
 CREATE OR REPLACE FUNCTION registra_endereco()  RETURNS TRIGGER AS $$
 BEGIN
     INSERT INTO  log_clientes
@@ -14,11 +14,16 @@ END;
 $$
 LANGUAGE plpgsql;
 
-CREATE TRIGGER trg_bloquear_exclusao_cliente
+CREATE TRIGGER trg_log_ender_cliente
 BEFORE UPDATE 
 ON cliente
 FOR EACH ROW
 EXECUTE FUNCTION registra_endereco();
+
+
+UPDATE cliente
+SET endereco = 'Rua 40 n.50'
+WHERE codigo_cliente = 720;
 
 
 ```
@@ -31,7 +36,7 @@ caso contrário será gerado um erro com o comando Raise Exception impossibilita
 
 
 
-```
+```SQL
 CREATE OR REPLACE   FUNCTION f_BaixaEstoque() returns TRIGGER 
 as $$
 DECLARE 
