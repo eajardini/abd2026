@@ -1058,7 +1058,7 @@ Drop trigger if exists tr_salario_registro on seq_funcionario;
 
 1. Desenvolva um gatilho para monitorar a alteração dos endereços dos clientes. Toda vez que um cliente tiver seu endereço alterado por meio de um comando UPDATE, a alteração deve ser registrada por meio de um INSERT em uma tabela de log.
 Assim, na função do Trigger deve haver um comando INSERT e o evento do Trigger deve ser BEFORE UPDATE.  
-   A estrutura da tabela sera:
+   A estrutura da tabela  de *log* será:
    ```sql
     CREATE TABLE log_clientes (
     id SERIAL PRIMARY KEY,
