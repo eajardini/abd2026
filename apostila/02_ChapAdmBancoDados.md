@@ -254,6 +254,59 @@ Os *tablespaces* (TS) são definições de locais para armazenamento lógico das
 Eles existem para que seja possível armazenar informações do servidor em locais distintos, o que pode ocorrer pelos mais diversos motivos: políticas de backup, organização, etc.
 
 ### Criando Tablespaces
-:exclamation: Só funciona se o SGBD não estiver em docker.
+:exclamation:  Só funciona se o SGBD não estiver em docker.  
+:exclamation:  As atividades devem ser feitas com o usuário *veterano* do Sistema Operacional Linux.
+
 Para criar um tablespace utiliza o comando:
+```SQL
 CREATE TABLESPACE nome_do_tablespace LOCATION ’localização’;
+```
+
+Para utilizamos um tablespace, devemos indicar o diretório em que ele será criado (e os dados serão posteriormente armazenados). O usuário postgres deve ter proprietário desse diretório. Assim, para criarmos um TS dentro de um diretório chamado *dbabd*, devemos seguir os seguintes passos:
+
+- Crie o diretório *dbabd* dentro do diretório do usuário *veterano*: *mkdir ~/dbabd* <enter>
+
+Uma vez configurado o diretório em que será criado o TS, vamos criar um novo TS seguindo o código abaixo.
+
+Para isso pode ser utilizado tanto o psql quanto o PgAdmin:
+```SQL
+CREATE TABLESPACE ts_teste LOCATION ’~/dbabd’;
+```
+
+Agora, vamos criar um database dentro desse TS criado:
+
+```SQL
+CREATE DATABASE "db_teste"
+WITH OWNER "postgres"
+ENCODING 'UTF8'
+TABLESPACE = ts_teste;
+```
+
+Verifique que o database *db_teste* foi criado dentro do TS *ts_teste*.
+
+### Listando as Tablespaces
+Para listar as tablespaces disponíveis, no *psql* digite:
+
+```SQL
+\db
+```
+
+### Apagando Tablespaces
+Para excluir um TS utilize a sintaxe a seguir:
+
+```SQL
+DROP TABLESPACE nome_do_tablespace;
+```
+
+Não é possível excluir um tablespace que não esteja vazio. Assim, para apagarmos o TS *ts_teste* criado anteriormente, devemos fazer:
+
+```SQL
+DROP DATABASE db_teste;
+DROP TABLESPACE ts_teste;
+```
+
+##  EXERCÍCIOS
+1. Determine qual a versão de seu SGBD?
+2. Você é consultor de SGBD postgre e foi contratado para criar um novo tablespace (TS) dentro de um novo disco adquirido pela empresa contratante. O nome do novo TS será TSTEMP2 e, dentro dele, deverá ser criado um banco de dados de nome BDTEMP2.
+3. Uma vez criado esse novo database, rode o script da disciplina dentro dele e verifique com que tamanho ele
+ficou.
