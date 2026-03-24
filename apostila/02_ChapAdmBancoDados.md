@@ -323,3 +323,28 @@ DROP TABLESPACE ts_teste;
 5. Após reunião com a diretoria, ficou decido que não seria mais necessário o uso do TS TSTEMP2, pois outro TS foi criado para substitui-lo. Assim, Paulo Afonso, pediu a você removesse o referido TS.  
 6. Dentro das atividades para que você foi contratado, está a de que você deve criar um banco de dados de nome BDTEMP3 que permita apenas 5 conexões simultâneas.
 7. Uma vez que se esteja no terminal do PostgreSQL através do uso do comando psql, qual comando deve ser utilizado para exibir a ajuda geral dos comandos do psql?
+   - (a) \help (b) \? (c) \H (d) \q (e) \help *  
+8. Qual a ferramenta interativa de linha de comando padrão utilizado para acessar o SGBD Postgres:
+   - (a) mysqld (b) sqlplus (c) pgcmd (d) psql (e) connect
+9. (ENADE) Quanto ao PostgreSQL, identifique a alternativa que apresenta corretamente a instrução para renomear uma tabela:  
+ (a) ALTER TABLE nome_antigo RENAME TO nome_novo;  
+ (b) RENAME TABLE nome_antigo TO nome_novo;  
+ (c) ALTER TABLE nome_antigo TO nome_novo;  
+ (d) RENAME TABLE nome_antigo ALTER TO nome_novo;  
+ (e) UPDATE TABLE nome_antigo ALTER TO nome_novo;
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+Gabarito:
+7 - B 8 - D 9 - A
+
