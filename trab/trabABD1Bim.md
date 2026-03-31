@@ -43,7 +43,7 @@ Após o banco de dados estiver importados, as atividades avaliadas dos grupos se
    - Crie duas sequencias para serem usadas em duas tabelas quaisquer e faça pelo menos dois inserts em cada uma delas.
      
 5. ( -2.0 pontos) Se não criar a visão:
-   - Crie uma visão que faça uma união (UNION) entre os nomes das tabelas *customer* e *staff*.
+   - Crie uma visão que faça uma união (UNION) entre os campos nomes dentro das tabelas *customer* e *staff*.
      
 6. ( -4.0 pontos) Se não fizer a visão corretamente:  
    - Crie uma visão para trazer os nomes dos clientes (customers) que alugaram os filmes. A consulta deve trazer o nome (first_name + last_name) e a quantidade de filmes alugados. **Importante**: se o cliente não alugou nada, deve trazer a quantidade 0.
