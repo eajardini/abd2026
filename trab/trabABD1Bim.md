@@ -5,6 +5,7 @@
 **Nota:** 2 pontos.  
 **Grupo:** 02 alunos (apenas 1 grupo com 3 alunos).  
 **Forma de entrega**: Postar no Moodle o repositório Github do trabalho.  
+**Forma de apresentação**: O grupo deverá apresentar para os demais o trabalho realizado..  
 
 ### Descrição:
 
@@ -31,12 +32,21 @@
 Após o banco de dados estiver importados, as atividades avaliadas dos grupos serão:  
 
 1. ( -10.0 pontos) Se não importar o banco de dados corretamente.
+   
 2. ( -2.0 pontos) Se não criar a visão:  
    - Escolha uma tabela qualquer e crie uma visão sobre ela.
+     
 3. ( -2.0 pontos) Se não criar a visão:
    - Escolha duas tabelas com cardinalidade 1:N e crie uma visão que faça uma junção entre elas.
+     
 4. ( -3.0 pontos) Se não criar as sequencias e nem inserir dados nas tabelas:
    - Crie duas sequencias para serem usadas em duas tabelas quaisquer e faça pelo menos dois inserts em cada uma delas.
+     
 5. ( -2.0 pontos) Se não criar a visão:
    - Crie uma visão que faça uma união (UNION) entre os nomes das tabelas *customer* e *staff*.
-   - 
+     
+6. ( -4.0 pontos) Se não fizer a visão corretamente:  
+   - Crie uma visão para trazer os nomes dos clientes (customers) que alugaram os filmes. A consulta deve trazer o nome (first_name + last_name) e a quantidade de filmes alugados. **Importante**: se o cliente não alugou nada, deve trazer a quantidade 0.
+
+7. ( -4.0 pontos) Se não fizer a visão corretamente:  
+   - Crie uma visão para trazer os nomes dos clientes (customers) que alugaram os filmes. A consulta deve trazer o nome (first_name + last_name) e os títulos dos filmes alugados. **Importante**: se o cliente não alugou nada, deve trazer valor nulo.
