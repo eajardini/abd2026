@@ -3,7 +3,7 @@
 
 **Data da entrega**: Verificar no Moodle.  
 **Nota:** 2 pontos.  
-**Grupo:** 02 alunos (apenas 1 grupo com 3 alunos).  
+**Grupo:** No máximo 02 alunos (apenas 1 grupo com 3 alunos).  
 **Forma de entrega**: Postar no Moodle o repositório Github do trabalho.  
 **Forma de apresentação**: O grupo deverá apresentar para os demais o trabalho realizado..  
 
