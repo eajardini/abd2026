@@ -151,8 +151,8 @@ Com o usuário recém criado não possui um banco de dados próprio, vamos conec
 
 Dessa forma, na linha de comando para chamar o psql, digite:  
 ```sql
-psql -h localhost -U postgres -d ABDS5
-psql -h localhost -U usergrant -d ABDS5
+psql -h localhost -U postgres -d abds5
+psql -h localhost -U usergrant -d abds5
 ```
 
 * **Exemplo 01**: tentar acessar os dados da tabela de cliente:
@@ -185,7 +185,11 @@ Após o erro de falta de permissão, com o usuário postgres e dentro do databas
 conceda a permissão da seguinte forma:  
 
 ```sql
+// Permissão de DML às tabelas no banco de dados conectado.
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO usergrant;
+
+// permissão de DDL no banco de dados conectado.
+GRANT USAGE, CREATE ON SCHEMA public TO usergrant ;
 ```
 
 Com o usuário usergrant, digite, novamente:  
