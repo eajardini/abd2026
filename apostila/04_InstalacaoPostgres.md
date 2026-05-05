@@ -24,7 +24,50 @@ sudo docker images
 
 Caso receba uma mensagem de comando não localizado, então instale o _Docker_ em seu SO.
 
-## Instalando Container do PostgreSQL
+## Instalando Container do PostgreSQL  
+
+Antes de instalarmos o *Postgres*, devemos verificar duas situações:  
+  1. Se não temos um *Postgres* instalado localmente e  
+  2. A versão do *psql*. Não eh recomendado instalar um Posgres em versão maior que a do *psql*.
+
+### Verificando se temos Postgres instalado localmente
+
+Para verificarmos isso, digite:
+```bash
+sudo service postgresql status
+```
+
+O retorno será:
+
+```console
+● postgresql.service - PostgreSQL RDBMS
+     Loaded: loaded (/usr/lib/systemd/system/postgresql.service; enabled; preset: enabled)
+     Active: active (exited) since Tue ...
+    Process: 7808 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
+   Main PID: 7808 (code=exited, status=0/SUCCESS)
+       CPU: 2ms
+```
+
+Caso retorno que há um Postgres ativo, devemos pará-lo com o comando:
+
+```bash
+sudo service postgresql stop
+```
+
+### Verificando a versão do *psql*
+
+Para fazer essa verificação, digite no prompt:
+
+```bash
+psql --version
+```
+
+Vai aparecer algo como:
+
+```console
+psql (PostgreSQL) 16.13 (Ubuntu 16.13-0ubuntu0.24.04.1)
+```
+
 
 Para baixar uma versão do PostgreSQL, no hub do Docker, verifique qual a versão do Postgres que deseja instalar e digite:
 
@@ -76,7 +119,7 @@ Para evitar estas situações, podemos configurar o *container* para gravar os d
 ```
 sudo mkdir /var/lib/database
 
-docker run -p 5432:5432 --name NomeDoMeuContainerBDLocal -d -v /var/lib/database:/var/lib/postgresql/data -e POSTGRES_PASSWORD=postdba postgresXX.X
+docker run -p 5432:5432 --name NomeDoMeuContainerBDLocal -d -v /var/lib/database:/var/lib/postgresql/data -e POSTGRES_PASSWORD=postdba postgres:XX.X
 ```
 
 ## Iniciando e parando um *container* Docker
@@ -95,3 +138,7 @@ sudo docker stop postgresXX.X
 
 ## Finalizando
 Vimos neste capítulo, como instalar o *PostgreSQL* em dentro de container. Este tipo de instalação oferece muitos benefícios e deve ser utilizado sempre que possível. Evite instalar o *PostgreSQL* diretamente no computador, prefira *containers*.
+
+## Exercícios
+
+1. Rode o *script* de criação do banco de dados da aula dentro do container criado com o banco de dados local. Você encontra o script no AVA Moodle ou no repostitório da disciplina no 8Github*.
