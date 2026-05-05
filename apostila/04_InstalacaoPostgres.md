@@ -68,6 +68,7 @@ Vai aparecer algo como:
 psql (PostgreSQL) 16.13 (Ubuntu 16.13-0ubuntu0.24.04.1)
 ```
 
+Nesse caso, a versão do *psql* é a **16.13**. Assim, não devemos instalar o *Postgres* maior que essa versão.
 
 Para baixar uma versão do PostgreSQL, no hub do Docker, verifique qual a versão do Postgres que deseja instalar e digite:
 
@@ -141,4 +142,4 @@ Vimos neste capítulo, como instalar o *PostgreSQL* em dentro de container. Este
 
 ## Exercícios
 
-1. Rode o *script* de criação do banco de dados da aula dentro do container criado com o banco de dados local. Você encontra o script no AVA Moodle ou no repostitório da disciplina no 8Github*.
+1. Rode o *script 00_criabaseBD_Postgres.sql* para criação do banco de dados da aula dentro do *container* criado. Escolha o *container* configurado para usar o banco de dados local. Você encontra o *script* no AVA Moodle ou no repositório da disciplina no *Github*.
