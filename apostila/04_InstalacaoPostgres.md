@@ -11,7 +11,7 @@ Com os _containers_ podemos executar diversas versões do PostgreSQL lado a lado
 
 As imagens dos _containers Docker_ disponíveis do PostgreSQL podem ser acessadas no sítio eletrônico do [docker](https://hub.docker.com). Esse endereço é denominado de hub do Docker.
 
-Neste sítio eletrônico além das imagens, há instruções de como instalar as imagens do _PostgreSQL_.
+No sítio eletrônico [das imagens do Postgres](https://hub.docker.com/_/postgres?xk=ShowRecommendedBadge&xt=Disabled)   além das imagens, há instruções de como instalar as imagens do _PostgreSQL_.
 
 ## Instalando o Docker
 O _Docker_ é um gerenciador de _container_ que roda em diversos Sistemas Operacionais (SO). Sua instalação em um determinado SO depende das características do sistema e não será abordado nesta seção. Partiremos do princípio que o Docker já esteja instalado.
@@ -70,7 +70,7 @@ psql (PostgreSQL) 16.13 (Ubuntu 16.13-0ubuntu0.24.04.1)
 
 Nesse caso, a versão do *psql* é a **16.13**. Assim, não devemos instalar o *Postgres* maior que essa versão.
 
-Para baixar uma versão do PostgreSQL, no hub do Docker, verifique qual a versão do Postgres que deseja instalar e digite:
+Uma vez verificado essas situações, para baixar uma versão do PostgreSQL, no hub do Docker, verifique qual a versão do Postgres que deseja instalar e digite:
 
 1. Baixe a imagem para a máquina local com o coando docker pull:
 ```bash
